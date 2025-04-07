@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AuthResponse, Flight } from "../types";
+import { AuthResponse, Flight, FlightRequest } from "../types";
 
 const API_BASE_URL = "http://localhost:8080/api/v1";
 const USER_BASE_URL = "http://localhost:8080/api";
@@ -50,6 +50,32 @@ export const loginUser = async (credentials: {
       "Content-Type": "application/json",
     },
   });
+  return response.data;
+};
+
+export const getAllFlights = async (): Promise<Flight[]> => {
+  const response = await axios.get<Flight[]>(`${API_BASE_URL}/flights`);
   console.log(response.data);
   return response.data;
 };
+
+export const deleteFlightById = async (id: string) => {
+  await axios.delete(`${API_BASE_URL}/flights/${id}`);
+};
+
+export const createFlight = async (flight: FlightRequest): Promise<void> => {
+  await axios.post(`${API_BASE_URL}/flights/add`, flight);
+};
+
+export const updateFlightById = async (
+  id: string,
+  flight: FlightRequest
+): Promise<void> => {
+  await axios.put(`${API_BASE_URL}/flights/${id}`, flight);
+};
+
+export const getFlightById = async (id: string): Promise<FlightRequest> => {
+  const response = await axios.get<FlightRequest>(`${API_BASE_URL}/flights/${id}`);
+  return response.data;
+};
+
