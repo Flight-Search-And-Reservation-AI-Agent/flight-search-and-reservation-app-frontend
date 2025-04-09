@@ -29,3 +29,46 @@ export interface FlightRequest {
   aircraftId: string;
   price: number;
 }
+
+export type Airport = {
+  airportId: string;
+  name: string;
+  city: string;
+  country: string;
+  code: string;
+};
+
+export type Aircraft = {
+  aircraftId: string;
+  model: string;
+  capacity: number;
+};
+
+export type User = {
+  userId: string;
+  username: string;
+  email: string;
+  role: string;
+};
+
+export type Reservation = {
+  reservationId: string;
+  user: {
+    userId: string;
+    username: string;
+  };
+  flight: {
+    flightId: string;
+    flightNumber: string;
+  };
+  seatNumber: string;
+  status: "BOOKED" | "CANCELLED";
+  reservationTime: string;
+};
+
+export type ReservationRequest = {
+  userId: string;
+  flightId: string;
+  seatNumber?: string;
+  status: "BOOKED" | "CANCELLED";
+};

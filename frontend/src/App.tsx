@@ -10,6 +10,9 @@ import AdminDashboard from './pages/admin/AdminDashboard'
 import Flights from './pages/admin/Flight'
 import AddFlight from './pages/admin/helpers/AddFlight'
 import EditFlight from './pages/admin/helpers/EditFlight'
+import Airports from './pages/admin/Airports'
+import Aircrafts from './pages/admin/Aircrafts'
+import Reservations from './pages/admin/Reservations'
 
 function App() {
 
@@ -26,12 +29,12 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<AdminDashboard />} />
           <Route path="flights" element={<Flights />} />
+          <Route path="airports" element={<Airports />} />
           <Route path="/admin/flights/add" element={<AddFlight />} />
           <Route path="/admin/flights/edit/:id" element={<EditFlight />} />
+          <Route path="aircrafts" element={<Aircrafts />} />
           {/* <Route path="users" element={<Users />} /> */}
-          {/* <Route path="airports" element={<Airports />} /> */}
-          {/* <Route path="aircrafts" element={<Aircrafts />} /> */}
-          {/* <Route path="reservations" element={<Reservations />} /> */}
+          <Route path="reservations" element={<Reservations />} />
         </Route>
       </Routes>
 
